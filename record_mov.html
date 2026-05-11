@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<canvas id="game" width="600" height="200" style="border:solid 1px"></canvas>
+
+<script>
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+ctx.fillRect(0,55,600,1);
+ctx.fillRect(0,110,600,1);
+ctx.fillRect(40,0,1,200);
+ctx.fillRect(185,0,1,200);
+ctx.fillRect(340,0,1,200);
+ctx.fillRect(490,0,1,200);
+let mouseX = 0;
+let mouseY = 0;
+
+let isRecording = false;
+let intervalId = null;
+
+const recordedPositions = [];
+const recordingInterval = 25; // 25ms
+
+// Track mouse relative to canvas
+canvas.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    mouseX = event.clientX - rect.left;
+    mouseY = event.clientY - rect.top;
+    touchstartX = event.clientX - rect.left;
+    touchstartY = event.clientY - rect.top;
+});
+
+// Key controls
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'a' && !isRecording) {
+        console.log("Recording started");
+        isRecording = true;
+        recordedPositions.length = 0; // clear old data
+
+        intervalId = setInterval(() => {
+            const timestamp = Date.now();
+            recordedPositions.push({
+                x: mouseX,
+                y: mouseY
+            });
+
+            console.log(`Recorded: X=${mouseX}, Y=${mouseY}`);
+        }, recordingInterval);
+    }
+
+    if (event.key === 's' && isRecording) {
+        console.log("Recording stopped");
+        isRecording = false;
+        clearInterval(intervalId);
+        const oneLine = JSON.stringify(recordedPositions);
+        // Display the array
+        //console.log(oneline);
+        navigator.clipboard.writeText(oneLine);
+
+
+    }
+});
+</script>
+</body>
+</html>

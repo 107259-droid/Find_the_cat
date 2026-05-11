@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Game Levels</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body{
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:#f6dfe5;
+        overflow:hidden;
+    }
+
+    /* MAIN CARD */
+    .level-box{
+        width:390px;
+        height:520px;
+        background:#e69aad;
+        border-radius:45px;
+        position:relative;
+
+        box-shadow:
+        15px 15px 25px rgba(0,0,0,0.18),
+        inset -5px -5px 10px rgba(255,255,255,0.25),
+        inset 5px 5px 10px rgba(0,0,0,0.08);
+
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
+
+    /* TITLE BUTTON */
+    .title-btn{
+        margin-top:20px;
+        width:200px;
+        height:60px;
+        border:none;
+        border-radius:40px;
+        background:#eba8b7;
+        color:white;
+        font-size:28px;
+        font-weight:bold;
+        letter-spacing:1px;
+
+        box-shadow:
+        0 8px 12px rgba(0,0,0,0.25),
+        inset 2px 2px 5px rgba(255,255,255,0.8),
+        inset -3px -3px 5px rgba(0,0,0,0.1);
+    }
+
+    /* LEVEL BUTTON AREA */
+    .levels{
+        margin-top:110px;
+        display:flex;
+        gap:28px;
+    }
+
+    /* LEVEL BUTTONS */
+    .level-btn{
+        width:100px;
+        height:100px;
+        border-radius:50%;
+        border:none;
+        cursor:pointer;
+
+        background:#f3d5dd;
+        color:white;
+        font-size:64px;
+        font-weight:bold;
+
+        box-shadow:
+        0 6px 12px rgba(0,0,0,0.18),
+        inset 3px 3px 6px rgba(255,255,255,0.9),
+        inset -4px -4px 6px rgba(0,0,0,0.08);
+
+        transition:0.2s;
+    }
+
+    .level-btn:hover{
+        transform:scale(1.05);
+    }
+
+    .level-btn:active{
+        transform:scale(0.95);
+    }
+
+    /* GO BACK BUTTON */
+    .back-btn{
+        position:absolute;
+        bottom:28px;
+
+        width:230px;
+        height:70px;
+        border:none;
+        border-radius:40px;
+        cursor:pointer;
+
+        background:#5fd4ff;
+        color:white;
+        font-size:28px;
+        font-weight:bold;
+
+        box-shadow:
+        0 8px 12px rgba(0,0,0,0.22),
+        inset 2px 2px 5px rgba(255,255,255,0.8),
+        inset -4px -4px 6px rgba(0,0,0,0.12);
+
+        transition:0.2s;
+    }
+
+    .back-btn:hover{
+        transform:scale(1.03);
+    }
+
+    .back-btn:active{
+        transform:scale(0.96);
+    }
+
+</style>
+</head>
+<body>
+
+<div class="level-box">
+
+    <!-- TITLE -->
+    <button class="title-btn">LEVEL</button>
+
+    <!-- LEVEL BUTTONS -->
+    <div class="levels">
+
+        <!-- LEVEL 1 -->
+        <button class="level-btn" onclick="goToLevel1()">1</button>
+
+        <!-- LEVEL 2 -->
+        <button class="level-btn" onclick="goToLevel2()">2</button>
+
+        <!-- LEVEL 3 -->
+        <button class="level-btn" onclick="goToLevel3()">3</button>
+
+    </div>
+
+    <!-- GO BACK -->
+    <button class="back-btn" onclick="goBackHome()">
+        GO BACK
+    </button>
+
+</div>
+
+<script>
+
+    /*
+    ==========================================
+    PUT YOUR PAGE FILE NAMES HERE
+    ==========================================
+    */
+
+    // HOME PAGE
+    function goBackHome(){
+        window.location.href = "index.html";
+    }
+
+    // LEVEL 1 PAGE
+    function goToLevel1(){
+        window.location.href = "game.html";
+    }
+
+    // LEVEL 2 PAGE
+    function goToLevel2(){
+        window.location.href = "game2.html";
+    }
+
+    // LEVEL 3 PAGE
+    function goToLevel3(){
+        window.location.href = "underconstruction.html";
+    }
+
+</script>
+
+</body>
+</html>
